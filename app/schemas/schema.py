@@ -25,3 +25,7 @@ class Tournament(BaseModel):
     name: str
     status: str
     stages: list[Stage]
+
+class Score(BaseModel):
+    score1: int
+    score2: int

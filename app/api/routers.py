@@ -1,10 +1,11 @@
 from fastapi import APIRouter
 
-from app.schemas.schema import Match, Stage, Team, Tournament
+from app.schemas.schema import Match, Score, Stage, Team, Tournament
 
 router = APIRouter(
     prefix="/api",
 )
+
 
 
 @router.get("/tournaments/{t_id}")
@@ -12,11 +13,7 @@ async def get_tournament(t_id: str):
     return {"t_id": t_id}
 
 
-# @router.put(
-#     "/{item_id}",
-#     tags=["custom"],
-#     responses={403: {"description": "Operation forbidden"}},
-# )
+
 
 
 @router.post("/tournaments")
@@ -41,8 +38,10 @@ def generate_tournament():
         ],
     )
 
-@router.put("/tournaments/{id}/matches/{id}")
-def put_tournament_info():
-    body = {}
-    return
+@router.put("/tournaments/{id}/matches/{match_id}")
+def put_tournament_info(id, match_id, score: Score):
+    print(score)
+    return {
+        "is_finished" : True
+    }
 
